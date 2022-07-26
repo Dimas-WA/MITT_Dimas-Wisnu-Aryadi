@@ -59,9 +59,11 @@ class SkillLevelController extends Controller
      * @param  \App\Models\SkillLevel  $skillLevel
      * @return \Illuminate\Http\Response
      */
-    public function show(SkillLevel $skillLevel)
+    public function show(SkillLevel $skilllevel)
     {
         //
+        return response()
+        ->json(['data' => $skilllevel]);
     }
 
     /**
