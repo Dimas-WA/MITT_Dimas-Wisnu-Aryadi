@@ -71,4 +71,43 @@ class AuthController extends Controller
             'message' => 'You have successfully logged out and the token was successfully deleted'
         ];
     }
+    public function update(Request $request)
+    {
+        $input = $request->all();
+        // dd($request->all());
+        $username = Auth::guard('sanctum')->user()->username;
+        // dd($username);
+        try {
+            //code...
+            $profile = UserProfile::where('username', $username)->firstOrFail();
+        } catch (\Exception $e) {
+            return response()
+                ->json(['message' => 'User Not Found'], 404);
+        }
+
+
+        $validator = Validator::make($request->all(),[
+            'name' => 'required|string|max:255',
+            'address' => 'required|string|max:50',
+            'bod' => 'required|string|max:10',
+            'email' => 'unique:user_profiles,email,'.$profile->id
+        ]);
+
+        if($validator->fails()){
+            return response()->json($validator->errors());       
+        }
+
+        UserProfile::where('username', $username)->update(
+            [
+                'name' => $request->name,
+                'address' => $request->address,
+                'bod' => $request->bod,
+                'email' => $request->email,
+            ]
+        );
+        return [
+            'message' => 'Profile was update'
+        ];
+    }
+
 }

@@ -26,5 +26,6 @@ Route::group([
     Route::post('register', 'AuthController@register');
     Route::group(['middleware' => ['auth:sanctum']], function() {
         Route::post('logout', 'AuthController@logout');
+        Route::post('update', 'AuthController@update');
     });
 });
