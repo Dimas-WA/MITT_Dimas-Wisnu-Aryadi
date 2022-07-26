@@ -29,3 +29,7 @@ Route::group([
         Route::post('update', 'AuthController@update');
     });
 });
+
+Route::group(['middleware' => ['auth:sanctum']], function() {
+    Route::resource('skills', 'SkillController');
+});
