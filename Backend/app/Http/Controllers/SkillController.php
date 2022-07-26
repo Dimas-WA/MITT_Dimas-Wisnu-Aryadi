@@ -62,7 +62,8 @@ class SkillController extends Controller
      */
     public function show(Skill $skill)
     {
-        //
+        return response()
+            ->json(['data' => $skill]);
     }
 
     /**
