@@ -32,4 +32,5 @@ Route::group([
 
 Route::group(['middleware' => ['auth:sanctum']], function() {
     Route::resource('skills', 'SkillController');
+    Route::resource('skilllevels', 'SkillLevelController');
 });
