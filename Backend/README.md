@@ -31,13 +31,11 @@ DB_PASSWORD={database_password}<br /><br />
 
 # Optimize After Finish Installation
 -- run command on terminal<br />
-php artisan optimize<br />
-php artisan serve --port=8080<br />
-
-Or use default values for all questions (`-y`):
-
 ```sh
-npx readme-md-generator -y
+php artisan optimize
+```
+```sh
+php artisan serve --port=8080
 ```
 
 ## License
