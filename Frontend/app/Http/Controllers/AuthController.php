@@ -7,6 +7,12 @@ use Illuminate\Http\Request;
 use Ixudra\Curl\Facades\Curl;
 class AuthController extends Controller
 {
+
+    public function DestroySession(){
+
+        session()->forget('access_token');
+          // return redirect(route('dashboard'));
+    }
     //
     public function register(Request $request)
     {
@@ -67,6 +73,8 @@ class AuthController extends Controller
         ->post();
         // dd($response->access_token);
 
-        return view('dashboard');
+        session(['access_token' => $response->access_token]);
+
+        return redirect('/dashboard');
     }
 }
