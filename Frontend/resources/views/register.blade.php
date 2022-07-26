@@ -30,7 +30,8 @@
             'address' => 'required|string|max:50',
             'bod' => 'required|string|max:10',
             'email' => 'required|string|email|max:255|unique:user_profiles', -->
-      <form action="" method="post">
+      <form action="{{ route('register.user') }}" method="post">
+        @csrf
         <div class="input-group mb-3">
           <input type="text" class="form-control" name="username" placeholder="Username">
           <div class="input-group-append">
@@ -81,7 +82,7 @@
         </div>
         <div class="row">
           <div class="col-12">
-            <a type="submit" class="btn btn-success btn-block">Register</a>
+            <button type="submit" class="btn btn-success btn-block">Register</button>
           </div>
           <!-- /.col -->
         </div>

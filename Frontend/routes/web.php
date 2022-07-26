@@ -22,3 +22,24 @@ Route::get('/login', function () {
 Route::get('/register', function () {
     return view('register');
 });
+
+Route::get('dashboard', function () {
+    return view('dashboard');
+});
+
+
+Route::post('/register-store', 'AuthController@register')->name('register.user');
+
+Route::post('/login-post', 'AuthController@login')->name('login.post');
+
+
+// Route::get('/skills', 'AuthController@skills');
+
+Route::resource('skills', 'SkillController');
+Route::resource('skilllevels', 'SkillLevelController');
+Route::resource('userskills', 'UserSkillController')
+// ->only(['store', 'update', 'destroy']
+// )
+;
+
+Route::get('userskills/{username}', 'UserSkillController@by_user');

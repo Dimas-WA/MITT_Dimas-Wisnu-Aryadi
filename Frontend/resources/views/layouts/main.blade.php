@@ -10,7 +10,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">{{ $page }}</h1>
+            <h1 class="m-0"></h1>
           </div>
           <!-- <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -39,10 +39,10 @@
   <footer class="main-footer">
     <!-- To the right -->
     <div class="float-right d-none d-sm-inline">
-    Developed by Software & Dev Team with ❤️
+    Developed by Dimas_WA with ❤️
     </div>
     <!-- Default to the left -->
-    <strong>Copyright &copy; 2022 <a href="https://www.msig.co.id/">Finance feat IT-S&D</a>.</strong>
+    <strong>Copyright &copy; 2022 <a href="https://www.mandiri.co.id/">Mandiri - InHealth</a>.</strong>
   </footer>
 </div>
 <!-- ./wrapper -->

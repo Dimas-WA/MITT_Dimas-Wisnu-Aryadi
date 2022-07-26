@@ -7,7 +7,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>MSIG Indonesia | B.T.R.N</title>
+  <title>MANDIRI | InHealth</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,400i,700&display=fallback">
@@ -17,5 +17,5 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <link rel="stylesheet" href="{{ asset('themes') }}/dist/css/adminlte.min.css">
   @yield('custom_css')
 
-  <link rel="icon" href="{{ asset('themes') }}/dist/img/favicon.png" type="image/png" />
+  <!-- <link rel="icon" href="{{ asset('themes') }}/dist/img/favicon.png" type="image/png" /> -->
 </head>

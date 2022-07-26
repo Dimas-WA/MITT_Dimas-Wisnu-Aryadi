@@ -25,8 +25,8 @@
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="index3.html" class="brand-link">
-      <img src="{{ asset('themes') }}/dist/img/msig_white_vertical.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light">MSIG B.T.R.N</span>
+      <img src="{{ asset('themes') }}/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+      <span class="brand-text font-weight-light">InHealth</span>
     </a>
 
     <!-- Sidebar -->
@@ -46,29 +46,28 @@
                   <p>Dashboard</p>
                 </a>
               </li>
-            @if (session('role') != 'Subscriber')
-            @if (session('role') != 'Approver')
-              
-              <li class="nav-header">IMPORTS</li>
-          <li class="nav-item @if (url()->current() == route('schedule-upload.index') || url()->current() == route('schedule-upload.create')) menu-open @endif">
-            <a href="#" class="nav-link @if (url()->current() == route('schedule-upload.index') || url()->current() == route('schedule-upload.create')) active @endif">
-              <i class="nav-icon far fa-calendar-alt"></i>
+
+
+          <li class="nav-header">MASTER DATA</li>
+          <li class="nav-item @if (url()->current() == route('skills.index') || url()->current() == route('skills.create')) menu-open @endif">
+            <a href="#" class="nav-link @if (url()->current() == route('skills.index') || url()->current() == route('skills.create')) active @endif">
+              <i class="nav-icon fas fa-clipboard-list"></i>
               <!-- <i class="nav-icon far fa-clock"></i> -->
               <p>
-                Schedule Import
+                SKILLS
                 <!-- <span class="right badge badge-danger">New</span> -->
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{ route('schedule-upload.create') }}" class="nav-link @if (url()->current() == route('schedule-upload.create')) active @endif">
+                <a href="{{ route('skills.create') }}" class="nav-link @if (url()->current() == route('skills.create')) active @endif">
                   <i class="far fa-plus-square nav-icon"></i>
                   <p>Add</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{ route('schedule-upload.index') }}" class="nav-link @if (url()->current() == route('schedule-upload.index')) active @endif">
+                <a href="{{ route('skills.index') }}" class="nav-link @if (url()->current() == route('skills.index')) active @endif">
                   <i class="fas fa-search nav-icon"></i>
                   <p>View</p>
                 </a>
@@ -76,161 +75,57 @@
             </ul>
           </li>
 
-          <li class="nav-item @if (url()->current() == route('manual-upload.index') || url()->current() == route('manual-upload.create')) menu-open @endif">
-            <a href="#" class="nav-link @if (url()->current() == route('manual-upload.index') || url()->current() == route('manual-upload.create')) active @endif">
-              <i class="nav-icon fas fa-file-import"></i>
-              <p>
-                Manual Import
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="{{ route('manual-upload.create') }}" class="nav-link @if (url()->current() == route('manual-upload.create')) active @endif">
-                  <i class="far fa-plus-square nav-icon"></i>
-                  <p>Add</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="{{ route('manual-upload.index') }}" class="nav-link @if (url()->current() == route('manual-upload.index')) active @endif">
-                  <i class="fas fa-search nav-icon"></i>
-                  <p>View</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-          
-          @endif
-          
-          @endif
-          <!-- session('role') == 'Editor' || session('role') == 'Approver' -->
-          @if (session('role') == 'Editor')
-            
-          <li class="nav-header">DATA</li>
-          <!-- <li class="nav-item menu-open"> -->
-          <li class="nav-item @if (url()->current() == route('banks.index') || url()->current() == route('banks.create')) menu-open @endif">
-            <a href="#" class="nav-link @if (url()->current() == route('banks.index') || url()->current() == route('banks.create')) active @endif">
-              <i class="nav-icon fas fa-university"></i>
-              <p>
-                Bank Account
-                <!-- <i class="fa-solid fa-users"></i> -->
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="{{ route('banks.create') }}" class="nav-link @if (url()->current() == route('banks.create')) active @endif">
-                  <i class="fas fa-user-plus nav-icon"></i>
-                  <p>Add</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="{{ route('banks.index') }}" class="nav-link @if (url()->current() == route('banks.index')) active @endif">
-                  <i class="fas fa-search nav-icon"></i>
-                  <p>View</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item @if (url()->current() == route('virtual-accounts.create') OR url()->current() == route('virtual-accounts.index')) menu-open @endif">
-            <a href="#" class="nav-link @if (url()->current() == route('virtual-accounts.index') OR url()->current() == route('virtual-accounts.create')) active @endif">
+          <li class="nav-item @if (url()->current() == route('skilllevels.create') OR url()->current() == route('skilllevels.index')) menu-open @endif">
+            <a href="#" class="nav-link @if (url()->current() == route('skilllevels.index') OR url()->current() == route('skilllevels.create')) active @endif">
               <i class="nav-icon fas fa-money-check-alt"></i>
               <p>
-                Virtual Account
+                Skill Levels
                 <!-- <i class="fa-solid fa-users"></i> -->
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{ route('virtual-accounts.create') }}" class="nav-link @if (url()->current() == route('virtual-accounts.create')) active @endif">
+                <a href="{{ route('skilllevels.create') }}" class="nav-link @if (url()->current() == route('skilllevels.create')) active @endif">
                   <i class="fas fa-user-plus nav-icon"></i>
                   <p>Add</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{ route('virtual-accounts.index') }}" class="nav-link @if (url()->current() == route('virtual-accounts.index')) active @endif">
+                <a href="{{ route('skilllevels.index') }}" class="nav-link @if (url()->current() == route('skilllevels.index')) active @endif">
                   <i class="fas fa-search nav-icon"></i>
                   <p>View</p>
                 </a>
               </li>
             </ul>
           </li>
-          @endif
-          @if (session('role') != 'Approver')
-          <li class="nav-header">TRANSACTION</li>
-          <!-- <li class="nav-item menu-open"> -->
-          <li class="nav-item">
-            <a href="{{ route('inquiry.search') }}" class="nav-link @if (url()->current() == route('inquiry.search') || url()->current() == route('inquiry.result')) active @endif">
-              <!-- <i class="nav-icon far fa-calendar-alt"></i> -->
-              <i class="nav-icon fas fa-clipboard-list"></i>
-              <p>
-                Inquiry
-                <!-- <span class="right badge badge-danger">Edit</span> -->
-                <span class="right badge badge-warning">Report</span>
-              </p>
-            </a>
-          </li>
-          @if (session('role') != 'Subscriber')
-            
-          <li class="nav-item">
-            <a href="{{ route('inquiry.search_edit') }}" class="nav-link @if (url()->current() == route('inquiry.search_edit') || url()->current() == route('inquiry.result_edit')) active @endif">
-              <!-- <i class="nav-icon far fa-calendar-alt"></i> -->
-              <i class="nav-icon fas fa-clipboard-list"></i>
-              <p>
-                Inquiry
-                <!-- <span class="right badge badge-danger">Edit</span> -->
-                <span class="right badge badge-danger">Edit</span>
-              </p>
-            </a>
-          </li>
-          @endif
-          @endif
 
-          @if (session('role') == 'Editor' || session('role') == 'Approver')
-          <li class="nav-header">TRX UPDATE</li>
-          <li class="nav-item">
-            <a href="{{ route('trx-progress.index') }}" class="nav-link @if (url()->current() == route('trx-progress.index') || url()->current() == route('trx-progress.create')) active @endif">
-              <!-- <i class="nav-icon far fa-calendar-alt"></i> -->
-              <i class="nav-icon fas fa-clipboard-list"></i>
-              <p>
-                Update
-                <!-- <span class="right badge badge-danger">Edit</span> -->
-                <span class="right badge badge-warning">Progress</span>
-              </p>
-            </a>
-          </li>
 
-          @endif
-
-          @if (session('role') == 'Administrator')
-          <li class="nav-header">ADMIN</li>
-          <!-- <li class="nav-item menu-open"> -->
-          <li class="nav-item @if (url()->current() == route('useraccess.create') OR url()->current() == route('useraccess.index')) menu-open @endif">
-            <a href="#" class="nav-link @if (url()->current() == route('useraccess.create') OR url()->current() == route('useraccess.index')) active @endif">
+          <li class="nav-item @if (url()->current() == route('userskills.create') OR url()->current() == route('userskills.index')) menu-open @endif">
+            <a href="#" class="nav-link @if (url()->current() == route('userskills.create') OR url()->current() == route('userskills.index')) active @endif">
               <i class="nav-icon fas fa-users"></i>
               <p>
-                User Access
+                User Skilss
                 <!-- <i class="fa-solid fa-users"></i> -->
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{ route('useraccess.create') }}" class="nav-link @if (url()->current() == route('useraccess.create')) active @endif">
+                <a href="{{ route('userskills.create') }}" class="nav-link @if (url()->current() == route('userskills.create')) active @endif">
                   <i class="fas fa-user-plus nav-icon"></i>
-                  <p>Add User</p>
+                  <p>Add</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{ route('useraccess.index') }}" class="nav-link @if (url()->current() == route('useraccess.index')) active @endif">
+                <a href="{{ route('userskills.index') }}" class="nav-link @if (url()->current() == route('userskills.index')) active @endif">
                   <i class="fas fa-search nav-icon"></i>
-                  <p>View User</p>
+                  <p>View</p>
                 </a>
               </li>
             </ul>
           </li>
-          @endif
+
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
