@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Skill;
+use App\Models\SkillLevel;
 use App\Models\UserSkill;
 use Illuminate\Http\Request;
 
+use Auth;
+use Validator;
 class UserSkillController extends Controller
 {
     /**
@@ -35,7 +39,40 @@ class UserSkillController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = Validator::make($request->all(),[
+            'skill_id' => 'required',
+            'skill_level_id' => 'required',
+        ]);
+
+        if($validator->fails()){
+            return response()->json($validator->errors());       
+        }
+
+        $username = Auth::guard('sanctum')->user()->username;
+
+        try {
+            //code...
+            $profile = Skill::where('id', $request->skill_id)->firstOrFail();
+        } catch (\Exception $e) {
+            return response()
+                ->json(['message' => 'Skill Not Found'], 404);
+        }
+        try {
+            //code...
+            $profile = SkillLevel::where('id', $request->skill_level_id)->firstOrFail();
+        } catch (\Exception $e) {
+            return response()
+                ->json(['message' => 'Skill Level Not Found'], 404);
+        }
+        
+        $skill = UserSkill::create([
+            'username' => $username,
+            'skill_id' => $request->skill_id,
+            'skill_level_id' => $request->skill_level_id,
+        ]);
+
+        return response()
+            ->json(['message' => 'New Skil was added for '. $username]);
     }
 
     /**
