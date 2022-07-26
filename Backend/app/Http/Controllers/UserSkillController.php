@@ -162,8 +162,12 @@ class UserSkillController extends Controller
      * @param  \App\Models\UserSkill  $userSkill
      * @return \Illuminate\Http\Response
      */
-    public function destroy(UserSkill $userSkill)
+    public function destroy(UserSkill $userskill)
     {
         //
+        $userskill->delete();
+
+        return response()
+            ->json(['message' => 'Skill '.$userskill->username.' was delete successfully']);
     }
 }
