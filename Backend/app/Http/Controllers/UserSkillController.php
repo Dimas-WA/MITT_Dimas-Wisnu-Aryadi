@@ -142,6 +142,21 @@ class UserSkillController extends Controller
     }
 
     /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function by_user(Request $request, $username)
+    {
+        //
+        // dd($username);
+        $userSkills = UserSkill::where('username', $username)->get();
+
+        return response()
+            ->json(['data' => $userSkills]);
+
+    }
+    /**
      * Remove the specified resource from storage.
      *
      * @param  \App\Models\UserSkill  $userSkill
