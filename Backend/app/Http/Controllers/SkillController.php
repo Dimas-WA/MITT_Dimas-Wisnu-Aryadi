@@ -85,7 +85,21 @@ class SkillController extends Controller
      */
     public function update(Request $request, Skill $skill)
     {
-        //
+        $validator = Validator::make($request->all(),[
+            'skillName' => 'required|string|max:255',
+        ]);
+
+        if($validator->fails()){
+            return response()->json($validator->errors());       
+        }
+
+        $skill->update([
+            'skillName' => $request->skillName,
+        ]);
+
+        return response()
+            ->json(['message' => $request->skillName.' was update sauccessfully']);
+        
     }
 
     /**
