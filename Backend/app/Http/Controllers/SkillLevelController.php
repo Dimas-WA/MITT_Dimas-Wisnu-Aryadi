@@ -15,7 +15,8 @@ class SkillLevelController extends Controller
      */
     public function index()
     {
-        //
+        return response()
+            ->json(['data' => SkillLevel::all()]);
     }
 
     /**
