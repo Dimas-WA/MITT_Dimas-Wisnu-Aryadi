@@ -1,0 +1,48 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\User;
+use App\Models\UserProfile;
+use Illuminate\Http\Request;
+
+use Illuminate\Support\Facades\Hash;
+use Validator;
+class AuthController extends Controller
+{public function register(Request $request)
+    {
+        # code...
+
+        // dd($request->all());
+        $validator = Validator::make($request->all(),[
+            'username' => 'required|string|max:255',
+            'password' => 'required|string|min:8',
+            'name' => 'required|string|max:255',
+            'address' => 'required|string|max:50',
+            'bod' => 'required|string|max:10',
+            'email' => 'required|string|email|max:255|unique:user_profiles',
+        ]);
+
+        if($validator->fails()){
+            return response()->json($validator->errors());       
+        }
+
+        $user = User::create([
+            'username' => $request->username,
+            'password' => Hash::make($request->password)
+         ]);
+        $profile = UserProfile::create([
+            'username' => $request->username,
+            'name' => $request->name,
+            'address' => $request->address,
+            'bod' => $request->bod,
+            'email' => $request->email,
+        ]);
+
+        $token = $user->createToken('auth_token')->plainTextToken;
+
+        return response()
+            ->json(['data' => $user,'access_token' => $token, 'token_type' => 'Bearer', ]);
+
+    }
+}
