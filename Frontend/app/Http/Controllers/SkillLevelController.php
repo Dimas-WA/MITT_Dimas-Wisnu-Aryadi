@@ -24,6 +24,7 @@ class SkillLevelController extends Controller
     public function create()
     {
         //
+        return view('skill_levels.create');
     }
 
     /**

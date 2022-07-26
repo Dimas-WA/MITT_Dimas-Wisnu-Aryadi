@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Skill;
 use Illuminate\Http\Request;
 
 class UserSkillController extends Controller
@@ -24,6 +25,7 @@ class UserSkillController extends Controller
     public function create()
     {
         //
+        return view('user_skills.create');
     }
 
     /**
