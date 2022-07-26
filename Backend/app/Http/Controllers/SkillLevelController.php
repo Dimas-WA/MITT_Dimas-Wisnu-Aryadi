@@ -109,8 +109,10 @@ class SkillLevelController extends Controller
      * @param  \App\Models\SkillLevel  $skillLevel
      * @return \Illuminate\Http\Response
      */
-    public function destroy(SkillLevel $skillLevel)
+    public function destroy(SkillLevel $skilllevel)
     {
-        //
+        $skilllevel->delete();
+        return response()
+            ->json(['message' => $skilllevel->skillLevelName.' was delete sauccessfully']);
     }
 }
