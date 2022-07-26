@@ -7,6 +7,32 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
+## DEPLOYMENT BACKEND
+
+## Laravel Installing
+# Clone
+-- Clone first at repository<br />
+-- go to project directory<br />
+-- run command on terminal<br />
+composer install<br />
+
+# Migrating DB
+-- run command on terminal<br />
+php artisan migrate:fresh<br />
+-- or import manual DB<br />
+
+# ENV Config -- Change with your db credentials
+DB_CONNECTION=mysql<br />
+DB_HOST=127.0.0.1<br />
+DB_PORT=3306<br />
+DB_DATABASE={database_name}<br />
+DB_USERNAME={database_username}<br />
+DB_PASSWORD={database_password}<br /><br />
+
+# Optimize After Finish Installation
+-- run command on terminal<br />
+php artisan optimize<br />
+php artisan serve --port=8080<br />
 
 Or use default values for all questions (`-y`):
 
