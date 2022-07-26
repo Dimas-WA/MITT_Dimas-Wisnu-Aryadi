@@ -84,9 +84,23 @@ class SkillLevelController extends Controller
      * @param  \App\Models\SkillLevel  $skillLevel
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, SkillLevel $skillLevel)
+    public function update(Request $request, SkillLevel $skilllevel)
     {
-        //
+        $validator = Validator::make($request->all(),[
+            'skillLevelName' => 'required|string|max:255',
+        ]);
+
+        if($validator->fails()){
+            return response()->json($validator->errors());       
+        }
+
+        $skilllevel->update([
+            'skillLevelName' => $request->skillLevelName,
+        ]);
+
+        return response()
+            ->json(['message' => $request->skillLevelName.' was update sauccessfully']);
+        
     }
 
     /**
