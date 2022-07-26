@@ -72,7 +72,7 @@ class UserSkillController extends Controller
         ]);
 
         return response()
-            ->json(['message' => 'New Skil was added for '. $username]);
+            ->json(['message' => 'New Skill was added for '. $username]);
     }
 
     /**
@@ -104,9 +104,41 @@ class UserSkillController extends Controller
      * @param  \App\Models\UserSkill  $userSkill
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, UserSkill $userSkill)
+    public function update(Request $request, UserSkill $userskill)
     {
-        //
+        
+        $validator = Validator::make($request->all(),[
+            'skill_id' => 'required',
+            'skill_level_id' => 'required',
+        ]);
+
+        if($validator->fails()){
+            return response()->json($validator->errors());       
+        }
+
+        $username = Auth::guard('sanctum')->user()->username;
+
+        try {
+            //code...
+            $profile = Skill::where('id', $request->skill_id)->firstOrFail();
+        } catch (\Exception $e) {
+            return response()
+                ->json(['message' => 'Skill Not Found'], 404);
+        }
+        try {
+            //code...
+            $profile = SkillLevel::where('id', $request->skill_level_id)->firstOrFail();
+        } catch (\Exception $e) {
+            return response()
+                ->json(['message' => 'Skill Level Not Found'], 404);
+        }
+        $userskill->update([
+            'skill_id' => $request->skill_id,
+            'skill_level_id' => $request->skill_level_id,
+        ]);
+
+        return response()
+            ->json(['message' => 'Skill '.$username.'was updated']);
     }
 
     /**
