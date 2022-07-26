@@ -1,10 +1,75 @@
-<h1 align="center">Hi 👋, I'm Dimas WA</h1>
-<h3 align="center">A passionate fullstack web and mobile developer</h3>
+## DEPLOYMENT BACKEND
 
-<h3 align="left">Connect with me:</h3>
-<p align="left">
-dimaswisnuaryadi@gmail.com
-</p>
+## Laravel Installing
+# Clone
+-- Clone first at repository<br />
+-- go to project directory<br />
+-- run command on terminal<br />
+```sh
+composer install
+```
 
-<h3 align="left">Languages and Tools:</h3>
-<p align="left"> <a href="https://www.arduino.cc/" target="_blank" rel="noreferrer"> <img src="https://cdn.worldvectorlogo.com/logos/arduino-1.svg" alt="arduino" width="40" height="40"/> </a> <a href="https://getbootstrap.com" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/bootstrap/bootstrap-plain-wordmark.svg" alt="bootstrap" width="40" height="40"/> </a> <a href="https://www.chartjs.org" target="_blank" rel="noreferrer"> <img src="https://www.chartjs.org/media/logo-title.svg" alt="chartjs" width="40" height="40"/> </a> <a href="https://www.figma.com/" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/figma/figma-icon.svg" alt="figma" width="40" height="40"/> </a> <a href="https://firebase.google.com/" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/firebase/firebase-icon.svg" alt="firebase" width="40" height="40"/> </a> <a href="https://flutter.dev" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/flutterio/flutterio-icon.svg" alt="flutter" width="40" height="40"/> </a> <a href="https://laravel.com/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/laravel/laravel-plain-wordmark.svg" alt="laravel" width="40" height="40"/> </a> <a href="https://mariadb.org/" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/mariadb/mariadb-icon.svg" alt="mariadb" width="40" height="40"/> </a> <a href="https://www.microsoft.com/en-us/sql-server" target="_blank" rel="noreferrer"> <img src="https://www.svgrepo.com/show/303229/microsoft-sql-server-logo.svg" alt="mssql" width="40" height="40"/> </a> <a href="https://www.mysql.com/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mysql/mysql-original-wordmark.svg" alt="mysql" width="40" height="40"/> </a> <a href="https://www.photoshop.com/en" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/photoshop/photoshop-line.svg" alt="photoshop" width="40" height="40"/> </a> <a href="https://www.php.net" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/php/php-original.svg" alt="php" width="40" height="40"/> </a> </p>
+# Migrating DB
+-- run command on terminal<br />
+```sh
+php artisan migrate:fresh
+```
+-- or import manual DB<br />
+
+# ENV Config -- Change with your db credentials
+
+```sh
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE={database_name}
+DB_USERNAME={database_username}
+DB_PASSWORD={database_password}
+```
+
+# Optimize After Finish Installation
+run command on terminal<br />
+```sh
+php artisan optimize
+```
+```sh
+php artisan serve --port=8080
+```
+
+## DEPLOYMENT FRONTEND
+
+## Laravel Installing
+# Clone
+-- Clone first at repository<br />
+-- go to project directory<br />
+-- run command on terminal<br />
+```sh
+composer install
+```
+
+# Migrating DB
+-- run command on terminal<br />
+```sh
+php artisan migrate:fresh
+```
+-- or import manual DB<br />
+
+# ENV Config -- Change with your db credentials
+
+```sh
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE={database_name}
+DB_USERNAME={database_username}
+DB_PASSWORD={database_password}
+```
+
+# Optimize After Finish Installation
+run command on terminal<br />
+```sh
+php artisan optimize
+```
+```sh
+php artisan serve
+```
