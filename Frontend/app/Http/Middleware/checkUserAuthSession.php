@@ -18,7 +18,7 @@ class checkUserAuthSession
     {
         if (!$request->session()->exists('access_token')) {
             // user value cannot be found in session
-            return redirect('/');
+            return redirect('/login');
         }
 
         return $next($request);

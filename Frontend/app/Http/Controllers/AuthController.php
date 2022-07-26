@@ -8,6 +8,15 @@ use Ixudra\Curl\Facades\Curl;
 class AuthController extends Controller
 {
 
+    public function CheckAuth(){
+
+
+        if (Session::has('access_token')) {
+            return $next($request);
+        }
+        session()->forget('access_token');
+          // return redirect(route('dashboard'));
+    }
     public function DestroySession(){
 
         session()->forget('access_token');
