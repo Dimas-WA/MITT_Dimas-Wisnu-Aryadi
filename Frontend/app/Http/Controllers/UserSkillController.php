@@ -16,6 +16,12 @@ class UserSkillController extends Controller
     public function index()
     {
         //
+
+        $response = Curl::to('http://localhost:8080/api/userskills')
+        ->withHeader('Authorization: Bearer '.session('access_token'))
+        ->asJson()
+        ->get();
+        return view('user_skills.index')->with('userskills', $response->data);
     }
 
     /**

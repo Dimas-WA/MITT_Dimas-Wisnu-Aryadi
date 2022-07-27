@@ -34,7 +34,7 @@ Route::group([
 Route::group(['middleware' => ['auth:sanctum']], function() {
     Route::resource('skills', 'SkillController');
     Route::resource('skilllevels', 'SkillLevelController');
-    Route::resource('userskills', 'UserSkillController')->only(['store', 'update', 'destroy']);
+    Route::resource('userskills', 'UserSkillController')->only(['index', 'store', 'update', 'destroy']);
 
     Route::get('userskills/{username}', 'UserSkillController@by_user');
 });

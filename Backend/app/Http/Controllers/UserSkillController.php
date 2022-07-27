@@ -19,6 +19,8 @@ class UserSkillController extends Controller
     public function index()
     {
         //
+        return response()
+        ->json(['data' => UserSkill::all()]);
     }
 
     /**
