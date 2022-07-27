@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use Ixudra\Curl\Facades\Curl;
 class SkillLevelController extends Controller
 {
     /**
@@ -37,6 +38,15 @@ class SkillLevelController extends Controller
     public function store(Request $request)
     {
         //
+
+        // dd($request->all());
+        $response = Curl::to('http://localhost:8080/api/skilllevels')
+        ->withHeader('Authorization: Bearer '.session('access_token'))
+        ->withData( array( 'skillLevelName' => $request->name ) )
+        ->asJson()
+        ->post();
+
+        return redirect(route('skilllevels.index'));
     }
 
     /**
