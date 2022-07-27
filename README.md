@@ -73,3 +73,8 @@ php artisan optimize
 ```sh
 php artisan serve
 ```
+
+# Running On Chrome Browser
+```sh
+http://localhost:8000
+```
