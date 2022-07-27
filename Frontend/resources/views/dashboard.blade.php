@@ -8,13 +8,13 @@
                 <h5 class="card-title">Hello, {{ session('name') }}</h5>
 
                 <p class="card-text">
-                  Department : {{ session('department') }}
+                  Username : {{ session('username') }}
                   <br>
-                  Section : {{ session('section') }}
+                  Address : {{ session('address') }}
+                  <br>
+                  DOB : {{ session('dob') }}
                   <br>
                   Email : {{ session('email') }}
-                  <br>
-                  Role : {{ session('role') }}
                 </p>
                 <!-- <a href="#" class="card-link">Card link</a>
                 <a href="#" class="card-link">Another link</a> -->

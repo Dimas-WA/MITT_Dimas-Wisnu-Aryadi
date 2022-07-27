@@ -21,6 +21,11 @@ class AuthController extends Controller
     public function DestroySession(){
 
         session()->forget('access_token');
+        session()->forget('username');
+        session()->forget('name');
+        session()->forget('address');
+        session()->forget('bod');
+        session()->forget('email');
           // return redirect(route('dashboard'));
     }
     //
@@ -85,6 +90,26 @@ class AuthController extends Controller
 
         session(['access_token' => $response->access_token]);
 
-        return redirect('/dashboard');
+        $responseProfile = Curl::to('http://localhost:8080/api/auth/profile')
+        ->withHeader('Authorization: Bearer '.$response->access_token)
+        ->asJson()
+        ->get();
+        // dd($responseProfile);
+
+        $username = $responseProfile->username;
+        $name = $responseProfile->name;
+        $address = $responseProfile->address;
+        $bod = $responseProfile->bod;
+        $email = $responseProfile->email;
+
+        session(['username' => $username]);
+        session(['name' => $name]);
+        session(['address' => $address]);
+        session(['bod' => $bod]);
+        session(['email' => $email]);
+        // dd($email);
+
+        return redirect('/dashboard')
+        ;
     }
 }
