@@ -50,6 +50,14 @@ class UserSkillController extends Controller
     public function store(Request $request)
     {
         //
+        // dd($request->all());
+        $response = Curl::to('http://localhost:8080/api/userskills')
+        ->withHeader('Authorization: Bearer '.session('access_token'))
+        ->withData( array( 'skill_id' => $request->skill_name, 'skill_level_id' => $request->skill_level ) )
+        ->asJson()
+        ->post();
+
+        return redirect(route('userskills.index'));
     }
 
     /**
