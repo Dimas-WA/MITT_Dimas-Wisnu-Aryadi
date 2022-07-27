@@ -11,10 +11,11 @@ class AuthController extends Controller
     public function CheckAuth(){
 
 
-        if (Session::has('access_token')) {
-            return $next($request);
+        if (session()->exists('access_token')) {
+            // return $next($request);
+
         }
-        session()->forget('access_token');
+        // session()->forget('access_token');
           // return redirect(route('dashboard'));
     }
     public function DestroySession(){
@@ -63,15 +64,15 @@ class AuthController extends Controller
         // dd($response['data'][0]['id']);
     }
 
-    public function skills()
-    {
+    // public function skills()
+    // {
 
-        $response = Curl::to('http://localhost:8080/api/skills')
-        ->withHeader('Authorization: Bearer 5|ZEpfOr13fWeHRJnBdPh6WO8dJuobdg2HB6gQpERw')
-        ->asJson(true)
-        ->get();
-        dd($response);
-    }
+    //     $response = Curl::to('http://localhost:8080/api/skills')
+    //     ->withHeader('Authorization: Bearer 5|ZEpfOr13fWeHRJnBdPh6WO8dJuobdg2HB6gQpERw')
+    //     ->asJson(true)
+    //     ->get();
+    //     dd($response);
+    // }
 
     public function login(Request $request)
     {

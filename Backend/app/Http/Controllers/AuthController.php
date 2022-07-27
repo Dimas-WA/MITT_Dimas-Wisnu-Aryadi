@@ -109,5 +109,14 @@ class AuthController extends Controller
             'message' => 'Profile was update'
         ];
     }
+    
+    public function profile(Request $request)
+    {
+        # code...
+        $username = Auth::guard('sanctum')->user()->username;
+        $userProfile = UserProfile::where('username', $username)->firstOrFail();
+        return response()->json($userProfile);
+        // return auth()->user();
+    }
 
 }

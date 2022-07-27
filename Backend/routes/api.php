@@ -27,6 +27,7 @@ Route::group([
     Route::group(['middleware' => ['auth:sanctum']], function() {
         Route::post('logout', 'AuthController@logout');
         Route::post('update', 'AuthController@update');
+        Route::get('profile', 'AuthController@profile');
     });
 });
 
