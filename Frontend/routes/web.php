@@ -36,9 +36,7 @@ Route::get('/', function () {
 Route::get('dashboard', function () {
     return view('dashboard');
 });
-Route::get('logout', function () {
-    return view('dashboard');
-})->name('logout');
+Route::get('logout', 'AuthController@logout')->name('logout');
 
     Route::resource('skills', 'SkillController');
     Route::resource('skilllevels', 'SkillLevelController');

@@ -69,15 +69,17 @@ class AuthController extends Controller
         // dd($response['data'][0]['id']);
     }
 
-    // public function skills()
-    // {
+    public function logout()
+    {
 
-    //     $response = Curl::to('http://localhost:8080/api/skills')
-    //     ->withHeader('Authorization: Bearer 5|ZEpfOr13fWeHRJnBdPh6WO8dJuobdg2HB6gQpERw')
-    //     ->asJson(true)
-    //     ->get();
-    //     dd($response);
-    // }
+        $response = Curl::to('http://localhost:8080/api/auth/logout')
+        ->withHeader('Authorization: Bearer '.session('access_token'))
+        ->asJson()
+        ->post();
+
+        return redirect('/login');
+    //    dd('logout');
+    }
 
     public function login(Request $request)
     {
