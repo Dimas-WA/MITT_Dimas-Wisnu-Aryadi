@@ -14,6 +14,7 @@ class SkillLevelController extends Controller
     public function index()
     {
         //
+        return view('skill_levels.index')->with('skill_levels', '');
     }
 
     /**
