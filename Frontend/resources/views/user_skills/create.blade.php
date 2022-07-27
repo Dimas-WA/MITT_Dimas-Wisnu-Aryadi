@@ -23,6 +23,10 @@
                   <select class="custom-select rounded-0" id="exampleBankCode" name="skill_name">
                     <option value="">Select Skill</option>
                       <option value="0">Pilih</option>
+                    @foreach ($skills as $skill)
+                      <option value="{{ $skill->id }}">{{ $skill->skillName }}</option>
+                    @endforeach
+
                   </select>
                 </div>
                   <div class="form-group">
@@ -30,6 +34,9 @@
                   <select class="custom-select rounded-0" id="exampleBankCode" name="skill_level">
                     <option value="">Select Level</option>
                       <option value="0">Pilih</option>
+                    @foreach ($skill_levels as $skill_level)
+                      <option value="{{ $skill_level->id }}">{{ $skill_level->skillLevelName }}</option>
+                    @endforeach
                   </select>
                 </div>
                   

@@ -31,6 +31,17 @@
                   </thead>
                   <tbody>
                   </tbody>
+                    @foreach ($skills as $skill)
+                        
+                    <tr>
+                      <td>{{ $loop->iteration }}</td>
+                      <td>{{ $skill->skillName }}</td>
+                      <td>
+
+                  <button type="button" class="btn btn-success btn-block btn-sm"><i class="fa fa-search"></i></button>
+                      </td>
+                    </tr>
+                    @endforeach
                 </table>
               </div>
               <!-- /.card-body -->

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Skill;
 use Illuminate\Http\Request;
+use Ixudra\Curl\Facades\Curl;
 
 class UserSkillController extends Controller
 {
@@ -25,7 +26,19 @@ class UserSkillController extends Controller
     public function create()
     {
         //
-        return view('user_skills.create');
+
+        $responseSkillLevel = Curl::to('http://localhost:8080/api/skilllevels')
+        ->withHeader('Authorization: Bearer '.session('access_token'))
+        ->asJson()
+        ->get();
+        $responseSkill = Curl::to('http://localhost:8080/api/skills')
+        ->withHeader('Authorization: Bearer '.session('access_token'))
+        ->asJson()
+        ->get();
+
+        return view('user_skills.create')
+        ->with('skills', $responseSkill->data)
+        ->with('skill_levels', $responseSkillLevel->data);
     }
 
     /**

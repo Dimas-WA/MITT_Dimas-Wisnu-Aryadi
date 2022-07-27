@@ -30,6 +30,17 @@
                     </tr>
                   </thead>
                   <tbody>
+                    @foreach ($skill_levels as $skill)
+                        
+                    <tr>
+                      <td>{{ $loop->iteration }}</td>
+                      <td>{{ $skill->skillLevelName }}</td>
+                      <td>
+
+                  <button type="button" class="btn btn-success btn-block btn-sm"><i class="fa fa-search"></i></button>
+                      </td>
+                    </tr>
+                    @endforeach
                   </tbody>
                 </table>
               </div>

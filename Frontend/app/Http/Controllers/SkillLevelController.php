@@ -15,7 +15,19 @@ class SkillLevelController extends Controller
     public function index()
     {
         //
-        return view('skill_levels.index')->with('skill_levels', '');
+
+        $response = Curl::to('http://localhost:8080/api/skilllevels')
+        ->withHeader('Authorization: Bearer '.session('access_token'))
+        ->asJson()
+        ->get();
+        // dd($response);
+
+        // foreach ($response->data as $res) {
+        //     # code...
+        //     dump($res->skillName);
+        // }
+        
+        return view('skill_levels.index')->with('skill_levels', $response->data);
     }
 
     /**

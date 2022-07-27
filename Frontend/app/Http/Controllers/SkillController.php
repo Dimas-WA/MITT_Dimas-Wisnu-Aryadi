@@ -15,7 +15,18 @@ class SkillController extends Controller
     public function index()
     {
         //
-        return view('skills.index')->with('skills', '');
+        $response = Curl::to('http://localhost:8080/api/skills')
+        ->withHeader('Authorization: Bearer '.session('access_token'))
+        ->asJson()
+        ->get();
+        // dd($response);
+
+        // foreach ($response->data as $res) {
+        //     # code...
+        //     dump($res->skillName);
+        // }
+        
+        return view('skills.index')->with('skills', $response->data);
     }
 
     /**
