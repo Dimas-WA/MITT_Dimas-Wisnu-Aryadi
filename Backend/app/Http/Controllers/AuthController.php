@@ -6,11 +6,23 @@ use App\Models\User;
 use App\Models\UserProfile;
 use Illuminate\Http\Request;
 
+use JWTAuth;
+use Tymon\JWTAuth\Exceptions\JWTException;
 use Illuminate\Support\Facades\Hash;
-use Auth;
+// use Auth;
+
+use Illuminate\Support\Facades\Auth;
+use Symfony\Component\HttpFoundation\Response;
 use Validator;
 class AuthController extends Controller
-{public function register(Request $request)
+{
+    
+    
+    public function __construct()
+    {
+        $this->middleware('auth:api', ['except' => ['login']]);
+    }
+    public function register(Request $request)
     {
         # code...
 
@@ -48,18 +60,43 @@ class AuthController extends Controller
     }
     public function login(Request $request)
     {
-        if (!Auth::attempt($request->only('username', 'password')))
-        {
-            return response()
-                ->json(['message' => 'Unauthorized'], 401);
+        // if (!Auth::attempt($request->only('username', 'password')))
+        // {
+        //     return response()
+        //         ->json(['message' => 'Unauthorized'], 401);
+        // }
+
+        // $user = User::where('username', $request['username'])->firstOrFail();
+
+        // $token = $user->createToken('auth_token')->plainTextToken;
+
+        // return response()
+        //     ->json(['message' => 'Hi '.$user->name.', welcome to home','access_token' => $token, 'token_type' => 'Bearer', ]);
+
+
+
+        // $credentials = $request->only('username', 'password');
+
+        // if ($token = $this->Auth::guard('jwt')->attempt($credentials)) {
+        //     return $this->respondWithToken($token);
+        // }
+
+        // return response()->json(['error' => 'Unauthorized'], 401);
+
+        $input = $request->only('username', 'password');
+        $jwt_token = null;
+  
+        if (!$jwt_token = JWTAuth::attempt($input)) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Invalid Username or Password',
+            ], Response::HTTP_UNAUTHORIZED);
         }
-
-        $user = User::where('username', $request['username'])->firstOrFail();
-
-        $token = $user->createToken('auth_token')->plainTextToken;
-
-        return response()
-            ->json(['message' => 'Hi '.$user->name.', welcome to home','access_token' => $token, 'token_type' => 'Bearer', ]);
+  
+        return response()->json([
+            'success' => true,
+            'token' => $jwt_token,
+        ]);
     }
 
     // method for user logout and delete token

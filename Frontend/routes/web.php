@@ -45,6 +45,8 @@ Route::get('logout', 'AuthController@logout')->name('logout');
     // )
     ;
 
+    Route::get('skill-delete/{id}', 'SkillController@delete_skill')->name('skill.del');
+
     Route::get('userskills/{username}', 'UserSkillController@by_user');
 
 });

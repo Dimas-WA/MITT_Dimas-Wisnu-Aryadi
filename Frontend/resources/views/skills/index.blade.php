@@ -39,6 +39,16 @@
                       <td>
 
                   <button type="button" class="btn btn-success btn-block btn-sm"><i class="fa fa-search"></i></button>
+                  
+                  <!-- <form method="POST" action="{{ route('skills.destroy', $skill->id) }}">
+                    @csrf
+                    @method('DELETE')
+
+                  <button type="submit" href="" class="btn btn-success btn-block btn-sm"><i class="fa fa-trash"></i></button>
+
+                  </form> -->
+                  <a href="{{ route('skill.del', $skill->id) }}" type="button" class="btn btn-success btn-block btn-sm"><i class="fa fa-trash"></i></a>
+
                       </td>
                     </tr>
                     @endforeach

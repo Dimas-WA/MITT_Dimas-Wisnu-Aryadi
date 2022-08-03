@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Skill;
 use Illuminate\Http\Request;
 use Ixudra\Curl\Facades\Curl;
 
@@ -100,8 +101,17 @@ class SkillController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function delete_skill(Request $request)
     {
         //
+        // dd('test');
+
+        $response = Curl::to('http://localhost:8080/api/skills/'.$request->id)
+        ->withHeader('Authorization: Bearer '.session('access_token'))
+        ->asJson()
+        ->delete();
+
+
+        return redirect(route('skills.index'));
     }
 }

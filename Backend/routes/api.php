@@ -24,14 +24,14 @@ Route::group([
 ], function () {
     Route::post('login', 'AuthController@login');
     Route::post('register', 'AuthController@register');
-    Route::group(['middleware' => ['auth:sanctum']], function() {
+    Route::group(['middleware' => ['auth:api']], function() {
         Route::post('logout', 'AuthController@logout');
         Route::post('update', 'AuthController@update');
         Route::get('profile', 'AuthController@profile');
     });
 });
 
-Route::group(['middleware' => ['auth:sanctum']], function() {
+Route::group(['middleware' => ['auth:api']], function() {
     Route::resource('skills', 'SkillController');
     Route::resource('skilllevels', 'SkillLevelController');
     Route::resource('userskills', 'UserSkillController')->only(['index', 'store', 'update', 'destroy']);
